@@ -3,7 +3,7 @@ const filters = {
     niveaux: ["N1", "N2", "N3"],
     categories: ["Mini", "Cadet", "Junior", "Senior"],
     disciplines: ["Danse", "Freeskating", "Groupe"],
-    programme: [
+    programmes: [
         {name: "Danse Libre", shortname: "DL"},
         {name: "Danse Imposée", shortname: "DI"},
         {name: "Programme Long", shortname: "PL"},
@@ -15,7 +15,7 @@ const selectedFilter = reactive({
     niveaux: [],
     categories: [],
     disciplines: [],
-    programme: [],
+    programmes: [],
 });
 
 const emit = defineEmits(['filter'])
@@ -25,7 +25,7 @@ const emitFilters = () => {
         niveaux: selectedFilter.niveaux,
         categories: selectedFilter.categories,
         disciplines: selectedFilter.disciplines,
-        programme: selectedFilter.programme
+        programmes: selectedFilter.programmes
     });
 };
 </script>
