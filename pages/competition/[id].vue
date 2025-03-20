@@ -102,8 +102,6 @@ const filteredSkaters = computed((): Skater[] => {
     if (activeFilter.value.programmes?.length) {
         result = copySkater.filter(skater => {
             const programmes = activeFilter.value.programmes.map(programme => programme.toLowerCase())
-            console.log("programmes", programmes)
-            console.log("programme skater", skater.programme)
             return skater.programme && programmes.includes(skater.programme.toLowerCase())
         })
     }
@@ -133,42 +131,9 @@ const searchQuery = ref('')
 
         <SkaterFilter @filter="filterData"/>
 
-        <div v-for="skater in filteredSkaters" :key="skater.id">
-            {{ skater.name }}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <SkaterCard v-for="skater in filteredSkaters" :key="skater.id" :skater="skater" />
         </div>
-
-        <!--        <div>
-                    <NuxtLink :to="'/skater/' + skater.id" class="block">
-                        <UCard class="hover:shadow-lg transition-shadow">
-                            <div class="flex items-center">
-                                <UAvatar
-                                    :text="initials"
-                                    size="lg"
-                                    class="mr-4"
-                                />
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-800">{{ skater.name }}</h3>
-                                    <div class="flex flex-wrap gap-2 mt-2">
-                                        <UBadge v-if="skater.niveau" color="gray" variant="soft">{{ skater.niveau }}</UBadge>
-                                        <UBadge v-if="skater.category" color="gray" variant="soft">{{
-                                                skater.category
-                                            }}
-                                        </UBadge>
-                                        <UBadge v-if="skater.discipline" color="gray" variant="soft">{{
-                                                skater.discipline
-                                            }}
-                                        </UBadge>
-                                        <UBadge v-if="skater.programme" color="gray" variant="soft">{{
-                                                skater.programme
-                                            }}
-                                        </UBadge>
-                                    </div>
-                                </div>
-                            </div>
-                        </UCard>
-                    </NuxtLink>
-                </div>-->
-
     </div>
 </template>
 
