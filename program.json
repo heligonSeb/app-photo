@@ -1,0 +1,46 @@
+[
+	{
+		"product_id": "7ad0acff-467b-4529-ac41-a683ec3cf409",
+		"product_names:": [
+			"package photo programme"
+		],
+		"id_tags": [],
+		"group_tags": [
+			"Super Championnat"
+		],
+		"subgroup_tags": [],
+		"period_tags": [
+			"2024-06-28"
+		],
+		"category_tags": [
+			"Veteran",
+			"PL",
+			"N2",
+			"FS"
+		],
+		"subcategory_tags": [],
+		"subject_tags": [
+			"Elena BERTOLO",
+			"Gianluca LEPETI"
+		],
+		"location_tags": [
+			"Torino",
+			"Italy"
+		],
+		"source_tags": [
+			"Sébastien HELIGON - photographe"
+		],
+		"color_tags": [],
+		"size_tags": [],
+		"description": "256 photos",
+		"img_cover": "https://storage.googleapis.com/photos-seb/2024-06-28/74f61a4b-7e48-42bf-91f5-75dab951c7ec.jpg",
+		"price": 25,
+		"files": [
+			{
+				"file": "IMG_1378.JPG",
+				"datetime": "2024-06-28 18:04:16",
+				"url": "https://storage.googleapis.com/photos-seb/2024-06-28/74f61a4b-7e48-42bf-91f5-75dab951c7ec.jpg"
+			}
+		]
+	}
+]

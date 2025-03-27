@@ -1,14 +1,13 @@
 <script setup lang="ts">
-defineProps({
-    competition: {
-        type: Object,
-        required: true
-    }
-})
+import type {Competition} from "~/types";
+
+const props = defineProps<{
+  competition: Competition
+}>()
 </script>
 
 <template>
-    <NuxtLink :to="`/competition/${competition.id}`">
+    <NuxtLink :to="`/competition/${competition.name}`">
         <div class="bg-white rounded-lg shadow-md p-0 hover:shadow-lg transition-shadow mb-5">
             <img :src="competition.image" :alt="competition.name" class="w-full h-48 object-cover rounded-t-lg"/>
 

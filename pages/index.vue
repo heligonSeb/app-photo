@@ -4,27 +4,11 @@ import type { Competition } from '~/types'
 const competitions = ref<Competition[]>([
     {
         id: 1,
-        name: "My Best Competition",
-        location: "Torino, Italie",
-        date_start: "19/10/2020",
-        date_end: "25/10/2020",
+        name: "Championnat de France Demi Finale N1",
+        location: "Rennes, France",
+        date_start: "11/04/2025",
+        date_end: "13/04/2025",
         image: "https://picsum.photos/800/400?random=1"
-    },
-    {
-        id: 2,
-        name: "My Best Competition Agian",
-        location: "Rome, Italie",
-        date_start: "19/03/2021",
-        date_end: "25/03/2021",
-        image: "https://picsum.photos/800/400?random=2"
-    },
-    {
-        id: 3,
-        name: "The Competition",
-        location: "Rennes, Bretagne",
-        date_start: "19/10/2021",
-        date_end: "25/10/2021",
-        image: "https://picsum.photos/800/400?random=3"
     }
 ]);
 </script>

@@ -1,10 +1,29 @@
 <script setup lang="ts">
-import type {Skater, SelectedFilters} from "~/types"
+import type { Skater, SelectedFilters, Program } from "~/types"
+import { useFetch } from "nuxt/app";
+import { useProgramsStore } from "~/stores/programs";
 
-const competition = ref({
-    id: 1,
-    name: "My Best Competition",
+const programsStore = useProgramsStore();
+
+
+const route = useRoute()
+
+const competitionName = route.params.id
+
+const {data, error} = await useFetch('https://n8n.koden.bzh/webhook/015c1aea-3ae0-408f-bac4-fe4e6be6b99e', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+    },
 });
+
+if (data.value) {
+    programsStore.setPrograms(data.value)
+} else {
+    console.error('Erreur lors de la récupération des données :', error.value);
+}
+
+console.log(programsStore.programs)
 
 const breadcrumpLinks = ref([
     {
@@ -13,44 +32,9 @@ const breadcrumpLinks = ref([
         icon: 'mdi-light:home'
     },
     {
-        label: "My Best Competition",
+        label: competitionName,
         to: '#',
         icon: 'material-symbols-light:group-search'
-    }
-])
-
-const skaters = ref<Skater[]>([
-    {
-        id: 1,
-        name: "Marie Dupont",
-        niveau: "N1",
-        category: "senior",
-        discipline: "danse",
-        programme: "PL"
-    },
-    {
-        id: 2,
-        name: "Lucas Martin",
-        niveau: "N2",
-        category: "espoir",
-        discipline: "freeskating",
-        programme: "PC"
-    },
-    {
-        id: 2,
-        name: "Lucas Martin",
-        niveau: "N2",
-        category: "espoir",
-        discipline: "freeskating",
-        programme: "PL"
-    },
-    {
-        id: 2,
-        name: "Marie Martin",
-        niveau: "N3",
-        category: "junior",
-        discipline: "danse",
-        programme: "DL"
     }
 ])
 
@@ -65,11 +49,9 @@ const filterData = (filter: SelectedFilters) => {
     activeFilter.value = filter
 }
 
-const filteredSkaters = computed((): Skater[] => {
+const filteredProgram = computed((): Skater[] => {
     let copySkater = [...skaters.value]
     let result = []
-
-    console.log(activeFilter.value)
 
     if (searchQuery.value) {
         const query = searchQuery.value.toLowerCase()
@@ -120,7 +102,7 @@ const searchQuery = ref('')
             :links="breadcrumpLinks"
             class="mb-6"
         />
-        <h1 class="text-6xl font-bold text-center text-gray-900 mb-6">{{ competition.name }}</h1>
+        <h1 class="text-6xl font-bold text-center text-gray-900 mb-6">{{ competitionName }}</h1>
 
         <UInput
             v-model="searchQuery"
@@ -132,7 +114,7 @@ const searchQuery = ref('')
         <SkaterFilter @filter="filterData"/>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <SkaterCard v-for="skater in filteredSkaters" :key="skater.id" :skater="skater" />
+           <ProgramCard v-for="program in programsStore.programs" :key="program.product_uuid" :program="program"/>
         </div>
     </div>
 </template>
