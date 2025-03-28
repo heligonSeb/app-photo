@@ -23,8 +23,6 @@ if (data.value) {
     console.error('Erreur lors de la récupération des données :', error.value);
 }
 
-console.log(programsStore.programs)
-
 const breadcrumpLinks = ref([
     {
         label: 'Accueil',
